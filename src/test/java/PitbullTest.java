@@ -1,13 +1,23 @@
-import static org.junit.Assert.*;
+import  org.junit.*;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 public class PitbullTest {
-    Pitbull Zakes = new Pitbull();
+    private DogInterface Zakes;
 
-    @org.junit.Test
+
+    @Before
+    public void setUp() throws Exception {
+        ApplicationContext ctx = new AnnotationConfigApplicationContext(AppConfig.class);
+        Zakes = (DogInterface)ctx.getBean("Pitbull");
+
+    }
+
+    @Test
     public void eat() throws Exception {
     }
 
-    @org.junit.Test
+    @Test
     public void bark() throws Exception
     {
        String bark =  Zakes.bark("hawuf");
